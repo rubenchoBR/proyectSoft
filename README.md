@@ -1,2 +1,2 @@
 # proyectSoft
-repositorio del grupo 14 ciclo 3 programación básica
+repositorio del equipo 14, grupos 28-29-30, ciclo 3 programación básica

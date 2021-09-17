@@ -1,0 +1,11 @@
+DESCRIPCIÓN DEL PROYECTO
+Analizar, diseñar y construir una aplicación de software que permita controlar las ventas físicas y virtuales de una empresa de manufactura.
+
+
+PRESENTACIÓN DEL EQUIPO.
+
+Diego Bayona Ruiz: Soy Ingeniero Industrial, me dedico a la gestión de producción, me gusta hacer música amateur 
+Integrante 2: ¿perfil profesional? ¿A que me dedico? ¿Qué me gusta Hobbies?
+Integrante 3: ¿perfil profesional? ¿A que me dedico? ¿Qué me gusta Hobbies?
+Integrante 4: ¿perfil profesional? ¿A que me dedico? ¿Qué me gusta Hobbies?
+Integrante 5: ¿perfil profesional? ¿A que me dedico? ¿Qué me gusta Hobbies?

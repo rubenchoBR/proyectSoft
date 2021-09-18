@@ -5,7 +5,10 @@ Analizar, diseñar y construir una aplicación de software que permita controlar
 PRESENTACIÓN DEL EQUIPO.
 
 Diego Bayona Ruiz: Soy Ingeniero Industrial, me dedico a la gestión de producción, me gusta hacer música amateur 
-Integrante 2: ¿perfil profesional? ¿A que me dedico? ¿Qué me gusta Hobbies?
+Integrante 2:
+Rubén Bermúdez: Soy ingeniero de sistemas, me desempeño como desarrollador, me gusta pasar tiempo con mi familia, 
+leer, salir a caminar.
+¿perfil profesional? ¿A que me dedico? ¿Qué me gusta Hobbies?
 Integrante 3: ¿perfil profesional? ¿A que me dedico? ¿Qué me gusta Hobbies?
 Integrante 4: ¿perfil profesional? ¿A que me dedico? ¿Qué me gusta Hobbies?
 Integrante 5: ¿perfil profesional? ¿A que me dedico? ¿Qué me gusta Hobbies?

@@ -4,6 +4,7 @@ Analizar, diseñar y construir una aplicación de software que permita controlar
 
 PRESENTACIÓN DEL EQUIPO.
 
+<<<<<<< HEAD
 Diego Bayona Ruiz: Soy Ingeniero Industrial, me dedico a la gestión de producción, me gusta hacer música amateur 
 Integrante 2:
 Rubén Bermúdez: Soy ingeniero de sistemas, me desempeño como desarrollador, me gusta pasar tiempo con mi familia, 
@@ -11,4 +12,10 @@ leer, salir a caminar.
 ¿perfil profesional? ¿A que me dedico? ¿Qué me gusta Hobbies?
 Neyla Polo Villanueva: Ingeniera de sistemas, presto servicios de soporte y desarrollo a una empresa, me gusta escuchar musica, ver peliculas y estudiar
 Luis Alberto Tafur Jimenez: Ingeniero de Sistemas, consultor acústico independiente por el momento, me gusta pasar tiempo con mi familia, jugar tenis y ver películas
+=======
+Diego Bayona Ruiz: Soy Ingeniero Industrial, me dedico a la gestión de producción, me gusta hacer música amateur. 
+Rubén Bermúdez: Soy ingeniero de sistemas, me desempeño como desarrollador, me gusta pasar tiempo con mi familia, leer, salir a caminar.
+Neyla Polo Villanueva: Ingeniera de sistemas, presto servicios de soporte y desarrollo a una empresa, me gusta escuchar musica, ver peliculas y estudiar.
+Pedro Acosta: Ingeniero químico, asistente de investigación, apasionado por la ciencia y la tecnología. En mi ratos libres suelo leer noticias, blogs, o ver un buen partido de fútbol.  
+>>>>>>> cfe3bf4... Presentacion Pedro
 Integrante 5: ¿perfil profesional? ¿A que me dedico? ¿Qué me gusta Hobbies?

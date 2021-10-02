@@ -5,13 +5,13 @@ import ActualizarProductos from "./components/modulos/productos/actualizar/Actua
 import ArticulosVenta from "./components/modulos/ventas/ArticulosVenta";
 import CarritoCompras from "./components/modulos/ventas/CarritoCompras";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import ListarProductos from "./components/modulos/productos/listar/ListarProductos";
 
 function App() {
   return (
     <div>
       <Header />
 
-      
       <Router>
         <Switch>
           <Route
@@ -19,16 +19,9 @@ function App() {
             path="/actualizar-producto"
             component={ActualizarProductos}
           />
-          <Route
-            exact
-            path="/verArticulos"
-            component={ArticulosVenta}
-          />
-          <Route
-            exact
-            path="/verCarrito"
-            component={CarritoCompras}
-          />
+          <Route exact path="/listarProductos" component={ListarProductos} />
+          <Route exact path="/verArticulos" component={ArticulosVenta} />
+          <Route exact path="/verCarrito" component={CarritoCompras} />
         </Switch>
       </Router>
       <Footer />

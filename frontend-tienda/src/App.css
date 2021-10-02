@@ -44,6 +44,10 @@
 .contenedor-articulos-carro{
   margin-left: 10px;
 }
+
+.texto-boton-eliminar{
+  font-size: x-small;
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

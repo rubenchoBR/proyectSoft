@@ -13,29 +13,34 @@ const CarritoCompras = ({articulosComprados}) => {
     }
     
     return (
-       
-
-            <div className="container-fluid">
-                <div className='row '>
-                <div className='col-4 mt-1 mr-5'>Articulo</div>
-                <div className='col mt-1'>Precio</div>
-                <div className='col mt-1'>Acción</div>
+            <div>
+            {!!articulosComprados && articulosComprados.length > 0 &&
+            <table  class="table table-hover contenedor-articulos-carro">
+                <thead>
+                    <tr>
+                <th  scope="col">Art&iacute;culo</th>
+                <th  scope="col">Precio</th>
+                <th  scope="col">Acci&oacute;n</th>
+                </tr>
+                </thead>
+                <tbody>
                 {
                 !!articulosComprados && articulosComprados.map((articulo)=>{
                         return(
-                            <div className='row'>
-                                <div className='col-4 mt-1  ml-5 ajuste-texto'>{articulo.nombre}</div>
-                                <div className='col mt-1'>{articulo.valor}</div>
-                                <div className='col mt-1 justify-content-md-center'>
-                                    <button onClick={() => eliminar(articulo)} className="btn btn-primary btn-sm align-middle">Eliminar</button>
-                                </div>
-                            </div>
+                            <tr  scope="row">
+                                <td>{articulo.nombre}</td>
+                                <td>{articulo.valor}</td>
+                                <td>
+                                    <a href="#" onClick={() => eliminar(articulo)} ><span className="texto-boton-eliminar">Eliminar</span></a>
+                                </td>
+                            </tr>
                         )
                     })
                 }
-                </div>
+           </tbody>
+            </table>
+            }
             </div>
-
         
     )
 }

@@ -1,0 +1,18 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    font-family:  Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif!important;
+}
+.navbar{
+    background: #FFBF00;
+}
+
+.nav-link {
+    color: #000!important;
+}
+
+.nav-link:hover{
+    color: #fff!important;
+}

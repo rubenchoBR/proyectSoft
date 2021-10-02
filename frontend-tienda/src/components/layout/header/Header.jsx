@@ -32,6 +32,12 @@ const Header = ()=>{
                                 <a className="nav-link" href="#">Gestion de Ventas</a>
                             </li>
                             <li className="nav-item">
+                                <a className="nav-link" href="/verArticulos">Ver Art&iacute;culos</a>
+                            </li>
+                            <li className="nav-item">
+                                <a className="nav-link" href="/verCarrito">Ver Carrito</a>
+                            </li>
+                            <li className="nav-item">
                                 <a className="nav-link" href="#">Login</a>
                             </li>
                         </ul>

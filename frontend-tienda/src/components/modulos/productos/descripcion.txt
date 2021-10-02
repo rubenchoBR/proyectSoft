@@ -1,0 +1,5 @@
+cada una de los componentes necesarios para la gestion de productos
+listar productos
+crear productos
+actualizar
+filtrar

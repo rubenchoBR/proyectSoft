@@ -2,7 +2,13 @@
   box-sizing:border-box;
   font-family:arial;
 }
-body{background:#FF9000;}
+.login {
+  background-color: #FF9000;
+  width: 100%;
+  min-height: 85vh;
+  display: flex;
+  justify-content: center;
+}
 h1{
   color:#ccc;
   text-align:center;
@@ -14,7 +20,7 @@ h1{
   padding:40px 30px;
   background:#eee;
   margin:auto;
-  position: absolute;
+  /*position: absolute;*/
   left: 0;
   right: 0;
   top:22.5%;

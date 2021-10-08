@@ -3,9 +3,9 @@ import './loginStyle.css';
 
 const Login = () => {
     return (
-        <div>
-            <body>
-            <div className="login-form">
+        <div className="login">
+            
+            <div className="login-form ">
                 <h1>GigaDevs Shop</h1>
                 <div className="form-group ">
                     <input type="email" className="form-control" placeholder="Nombre de usuario" id="UserName" />
@@ -18,7 +18,7 @@ const Login = () => {
                 <a className="link" href="#">¿Olvidaste tu contraseña?</a>
                 <button type="button" className="log-btn" >Ingresar</button>
             </div>
-            </body>
+            
         </div>
     );
 }

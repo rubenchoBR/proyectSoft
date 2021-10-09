@@ -5,8 +5,19 @@ import ActualizarProductos from "./components/modulos/productos/actualizar/Actua
 import ArticulosVenta from "./components/modulos/ventas/ArticulosVenta";
 import CarritoCompras from "./components/modulos/ventas/CarritoCompras";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import  { useEffect } from "react";
 
 function App() {
+
+
+  useEffect(() => {
+   fetch('http://localhost:9000/api')
+    .then(resp => resp.json())
+    .then(data => this.setState())
+   },[]);
+
+   
+
   return (
     <div>
       <Header />

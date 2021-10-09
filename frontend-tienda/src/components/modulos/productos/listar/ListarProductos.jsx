@@ -1,11 +1,15 @@
 import {React,useState} from 'react';
+import Modal from 'react-bootstrap/Modal'
 import {articulos} from '../../../../datos/Articulos'
 import BarraBusqueda from '../busqueda/BarraBusqueda';
+import ActualizarProductos from '../actualizar/ActualizarProductos'
 
 const ListarProductos = ()=>{
     console.log()
     const  [search, setSearch] = useState('');
     const [paginaActual, setPaginaActual] = useState(0)
+
+    const [lgShow, setLgShow] = useState(false);
 
     const onSearchChange = (e)=>{
         console.log(e)
@@ -34,17 +38,7 @@ const ListarProductos = ()=>{
     return (
 
         <div className="container">
-            {/*<div>
-                <form className="container d-flex mb-10">
-                    <input className="form-control me-2"
-                     type="search"
-                      placeholder="Buscar Producto"
-                      value={search}
-                      aria-label="Search"
-                      onChange={onSearchChange}/>
-            </form>
-            </div>*/}
-            <BarraBusqueda onSearchChange={onSearchChange}/>
+            <BarraBusqueda onSearchChange={onSearchChange} setSearch={setSearch} search={search}/>
             <hr/>
             <button className="btn btn-primary"  onClick={anterior}>Anterior</button>
             &nbsp;
@@ -64,22 +58,37 @@ const ListarProductos = ()=>{
                     <tbody>
                     {   
                         filtrarProductos().map((producto) =>(
-                            <tr>
+                            <tr key={producto.idElemento}>
                                 <td>{producto.idElemento}</td>
                                 <td>{producto.nombre}</td>
                                 <td>{producto.valor}</td>
                                 <td>{producto.detalle}</td>
                                 <td> 
-                                    <button className="btn btn-primary btn-sm">Actualizar</button>
+                                    <button className="btn btn-primary btn-sm" onClick={() => setLgShow(true)}>Actualizar</button>
                                     <button className="btn btn-danger btn-sm">Eliminar</button>
                                 </td>
                             </tr>
                         ))}
 
+
                     </tbody>
                 </table>
             </div>
-        
+            <Modal
+                size="lg"
+                show={lgShow}
+                onHide={() => setLgShow(false)}
+                aria-labelledby="example-modal-sizes-title-lg"
+            >
+                <Modal.Header closeButton>
+                <Modal.Title id="example-modal-sizes-title-lg">
+                    Actualizar Productos
+                </Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                <ActualizarProductos/>
+                </Modal.Body>
+            </Modal>
         </div>
     );
 }

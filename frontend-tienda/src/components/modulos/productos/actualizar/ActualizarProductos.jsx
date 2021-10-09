@@ -4,7 +4,7 @@ import './actualizar.css'
 const ActualizarProductos=()=>{
     return(
         <section className="section">
-            <div className="container">
+            
                 <form className="formularioActualizarProduct">
                     <div className="row">
                         <div className="form-group col-12 col-md-6">
@@ -60,7 +60,7 @@ const ActualizarProductos=()=>{
                         <button type="submit" className="btn btn-primary">Actualizar</button>
                     </div>
                 </form>
-            </div>
+            
         </section>
     );
 }

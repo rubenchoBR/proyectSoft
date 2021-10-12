@@ -16,6 +16,10 @@ const ListarProductos = ()=>{
         setPaginaActual(0);
        setSearch(e.target.value);
     }
+    const actualizar=(e,producto)=>{
+        setLgShow(true)
+        console.log(e,producto);
+    }
 
     const filtrarProductos=()=>{
         if (search.length===0)
@@ -64,7 +68,7 @@ const ListarProductos = ()=>{
                                 <td>{producto.valor}</td>
                                 <td>{producto.detalle}</td>
                                 <td> 
-                                    <button className="btn btn-primary btn-sm" onClick={() => setLgShow(true)}>Actualizar</button>
+                                    <button className="btn btn-primary btn-sm" onClick={(e) => actualizar(e,producto)}>Actualizar</button>
                                     <button className="btn btn-danger btn-sm">Eliminar</button>
                                 </td>
                             </tr>

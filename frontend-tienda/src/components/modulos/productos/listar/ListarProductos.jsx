@@ -10,6 +10,7 @@ const ListarProductos = ()=>{
     const [paginaActual, setPaginaActual] = useState(0)
 
     const [lgShow, setLgShow] = useState(false);
+    const [formProduct,setFormProduct]=useState({nombre:'', valor: 0, detalle: '', imagen:"", idElemento:0,disponibilidad:false})
 
     const onSearchChange = (e)=>{
         console.log(e)
@@ -18,6 +19,7 @@ const ListarProductos = ()=>{
     }
     const actualizar=(e,producto)=>{
         setLgShow(true)
+        setFormProduct(producto)
         console.log(e,producto);
     }
 
@@ -68,7 +70,7 @@ const ListarProductos = ()=>{
                                 <td>{producto.valor}</td>
                                 <td>{producto.detalle}</td>
                                 <td> 
-                                    <button className="btn btn-primary btn-sm" onClick={(e) => actualizar(e,producto)}>Actualizar</button>
+                                    <button className="btn btn-primary btn-sm" onClick={(e) => actualizar(e,producto)}>Actualizar</button>&nbsp;
                                     <button className="btn btn-danger btn-sm">Eliminar</button>
                                 </td>
                             </tr>
@@ -90,7 +92,7 @@ const ListarProductos = ()=>{
                 </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                <ActualizarProductos/>
+                <ActualizarProductos producto={formProduct}/>
                 </Modal.Body>
             </Modal>
         </div>

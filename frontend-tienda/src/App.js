@@ -15,11 +15,6 @@ function App() {
 
       <Router>
         <Switch>
-          <Route
-            exact
-            path="/actualizar-producto"
-            component={ActualizarProductos}
-          />
           <Route exact path="/listarProductos" component={ListarProductos} />
           <Route exact path="/verArticulos" component={ArticulosVenta} />
           <Route exact path="/verCarrito" component={CarritoCompras} />

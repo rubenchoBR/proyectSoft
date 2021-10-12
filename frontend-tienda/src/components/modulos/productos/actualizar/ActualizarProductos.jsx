@@ -1,20 +1,18 @@
 import React, { useState } from 'react';
 import './actualizar.css'
 
-
-
-const ActualizarProductos = () => {
-
+const ActualizarProductos=(props)=>{
+    console.log(props.producto)
     const [producto, setProducto] = useState({
-        identificador: '1',
-        nombre: '',
-        valor: '',
-        descripcion: '',
-        disponibilidad: '',
-        imagen: ''
+        identificador: props.producto.idElemento,
+        nombre: props.producto.nombre,
+        valor: props.producto.valor,
+        descripcion: props.producto.detalle,
+        disponibilidad: props.producto.disponibilidad
 
     })
     const productOnChage = (e) => {
+        console.log(e)
         setProducto({
             ...producto,
             [e.target.name]: e.target.value

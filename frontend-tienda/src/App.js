@@ -7,8 +7,19 @@ import CarritoCompras from "./components/modulos/ventas/CarritoCompras";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import ListarProductos from "./components/modulos/productos/listar/ListarProductos";
 import Login from "./components/modulos/login/Login";
+import  { useEffect } from "react";
 
 function App() {
+
+
+  useEffect(() => {
+   fetch('http://localhost:9000/api')
+    .then(resp => resp.json())
+    .then(data => this.setState())
+   },[]);
+
+   
+
   return (
     <div>
       <Header />

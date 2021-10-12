@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState , useEffect} from 'react';
 import {articulos} from '../../../datos/Articulos';
+import Header from '../../layout/header/Header';
 import CarritoCompras from './CarritoCompras';
+
 //import { useSelector, useDispatch } from 'react-redux';
 //import { createStore } from 'redux';
 
@@ -13,8 +15,37 @@ const ArticulosVenta = () => {
     );
 
     const [articulosAMostrar, setArticulosAMostrar] = useState(
-        articulos
+        //articulos
+        []
+        
+
     );
+
+    useEffect(() => {
+        fetch('http://localhost:9000/api/obtener-articulos',
+        {
+            method: "GET",
+            headers: new Headers({
+                Accept: "application/json"
+            })
+        }
+        
+        )
+      .then((res) => res.json())
+      .then(data => {setArticulosAMostrar(data)})
+      .catch((err) => {
+
+      });
+      
+      
+        },[])
+
+        /*/*
+        fetch('http://localhost:9000/api/obtener-articulos')
+         .then(function(resp){
+            setArticulosAMostrar(resp.json())
+            }
+        ).then(data => setArticulosAMostrar(data))*/
 
     const adicionar = (articulo) =>{
         setArtVenta([...artVenta,articulo])
@@ -38,7 +69,7 @@ const ArticulosVenta = () => {
         }
     }
 
-    return (
+    return articulosAMostrar ? (
         <div className="container">
             <div  className='row margen-contenedor'>
             <div className='col-md-9'> 
@@ -48,7 +79,7 @@ const ArticulosVenta = () => {
             </div>
                 <div className='row'>
                     {
-                    articulosAMostrar.map(elemento => {
+                    articulosAMostrar.length > 0 && articulosAMostrar.map(elemento => {
                         return (
 
                         <div className='col-4 ml-1  mb-3'>
@@ -73,7 +104,7 @@ const ArticulosVenta = () => {
             </div>
             </div>
         </div>
-    )
+    ): null
 }
 
 export default ArticulosVenta

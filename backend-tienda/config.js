@@ -3,7 +3,7 @@ module.exports={
     database:{
         username:"root",
         password:"root",
-        database:"biblioteca",
+        database:"bd_tienda",
         host:"localhost"
     }
 }

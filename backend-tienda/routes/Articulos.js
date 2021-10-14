@@ -1,8 +1,11 @@
 const express = require('express');
 const router = express.Router();
+const {Model, DataTypes} = require('sequelize');
+const sequelize = require('../database/db');
 const Articulo = require('../database/models/Articulo');
 //const DetalleVenta = require('../database/models/DetalleVenta');
-const Venta = require('../database/models/Venta');
+const Ventas= require('../database/models/Venta')(sequelize, DataTypes);;
+const DetalleVenta = require('../database/models/DetalleVenta')(sequelize, DataTypes);;
 
 
 router.get('/obtener-articulos', function(req, res, next) {
@@ -15,35 +18,28 @@ router.get('/obtener-articulos', function(req, res, next) {
 });
 
 router.get('/detallar-venta', function(req, res, next) {
-/*
-    Venta.findAll().then(
+    console.log(Ventas);
+    
 
-        venta => {
-            venta.getDetalleVenta().then(detalle => {
-                console.log("hola", venta)
-            });
-            console.log("hola", venta)
-        });*/
-        Venta.findAll(/*{
-            include: [{
-              model: DetalleVenta,
-              as: 'users',
-            }],
-          }*/).then(
-           // {include:'venta_idventas'}
+    DetalleVenta.findAll(
+        
+
+      ).then(
+       // {include:'venta_idventas'}
 /*
-            (venta) => {
-                venta.getDetalleVenta().then(detalle => {
-                    console.log("hola2", venta)
-                });
-                console.log("hola3", venta)
-            });*/
-            venta => {
-                //venta.getDetalleVenta();
-                console.log("hola3", venta);
-                
-                return res.json(venta);
+        (venta) => {
+            venta.getDetalleVenta().then(detalle => {
+                console.log("hola2", venta)
             });
+            console.log("hola3", venta)
+        });*/
+        venta => {
+            //venta.getDetalleVenta();
+            console.log("hola3", venta);
+            
+            return res.json(venta);}
+      );
+
 });
 
 router.get('/', function(req, res, next) {

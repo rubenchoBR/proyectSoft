@@ -99,21 +99,90 @@ const listarProductos = async (req, res) => {
 
 const editarProducto = async (req, res) => {
   console.log(req.body)
-  try {
-    let resp=await Productos.update({
-      nombre: req.body.nombre
-  }, {
-      where: {
-          id: req.params.id
-      }
-  })
-  console.log(resp)
-  res.status(200).send({
-    msg: resp,
-  });
-  } catch (error) {
-    
+  console.log(req.files)
+  const nombre = req.body.nombre;
+  const valor = req.body.valor;
+  const descripcion = req.body.descripcion;
+  const disponibilidad = req.body.disponibilidad;
+
+  
+  console.log(req.files);
+  let file_name = "Imagen no subida";
+  if (Object.keys(req.files).length === 0) {
+    console.log("estro");
+    file_name = req.body.imagen;
+  }else{
+         //Nombre y extencion
+        let file_path = req.files.file0.path;
+        let file_split = file_path.split("\\");
+
+        file_name = file_split[3];
+        let extencion_split = file_name.split("\.");
+        let extencion = extencion_split[1];
+        console.log(extencion);
+        if (
+          extencion != "png" &&
+          extencion != "jpg" &&
+          extencion != "jpge" &&
+          extencion != "gif"
+        ) {
+            fs.unlink(file_path, (err) => {
+              res.status(200).send({
+                status: "Error",
+                message: "La extención de la imagen no es valida",
+              });
+            });
+        }
   }
+ 
+    try {
+         
+
+            let resp=await Productos.update({
+                nombre:nombre,
+                valor:valor,
+                descripcion:descripcion,
+                disponibilidad:disponibilidad,
+                imagen:file_name
+              }, {
+                  where: {
+                      id: req.params.id
+                  }
+              });
+                       
+     
+            if (resp) {
+              res.status(200).send({
+                resp,
+              });
+            } else {
+              res.status(400).send({
+                msg: "Error al actualizar el producto",
+              });
+            }
+    } catch (error) {
+        res.status(500).send({
+        error:error
+      });
+    }
+  
+
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
  
 
  

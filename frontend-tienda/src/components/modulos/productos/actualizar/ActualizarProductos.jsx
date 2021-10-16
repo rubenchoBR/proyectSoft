@@ -45,6 +45,12 @@ const ActualizarProductos=(props)=>{
                     imagen,
                     imagen.name
                 )
+            }else{
+                formData.append(
+                    'imagen',
+                    imagen
+                )
+                
             }
            
             formData.append(

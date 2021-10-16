@@ -9,5 +9,5 @@ const sequelize = new Sequelize(
     {host:database.host,dialect:'mysql'}
 );
 
-sequelize.sync({ force: true })
+//sequelize.sync({ force: true })
 module.exports = sequelize;

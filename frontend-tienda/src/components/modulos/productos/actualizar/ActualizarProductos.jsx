@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './actualizar.css'
+const axios = require('axios');
 
 const ActualizarProductos=(props)=>{
     console.log(props.producto)
@@ -9,18 +10,63 @@ const ActualizarProductos=(props)=>{
         valor: props.producto.valor,
         descripcion: props.producto.detalle,
         disponibilidad: props.producto.disponibilidad
+        //imagen:props.producto.imagen
 
     })
+    const [imagen, setImagen] = useState(props.producto.imagen)
+    
     const productOnChage = (e) => {
-        console.log(e)
+         
+        
         setProducto({
             ...producto,
-            [e.target.name]: e.target.value
+            [e.target.name]: e.target.value 
+           
         })
     }
+    const fileOnChage = (e) => {
+        
+        setImagen(e.target.files[0])
+        
+            
+        }
+    
     const actualizarProduct=(e)=>{
         e.preventDefault()
         console.log(producto)
+
+        console.log(imagen);
+            const formData= new FormData();
+
+            formData.append(
+                'file0',
+                imagen,
+                imagen.name
+            )
+            formData.append(
+                'nombre',
+                producto.nombre
+            )
+            formData.append(
+                'valor',
+                producto.valor
+            )
+            formData.append(
+                'descripcion',
+                producto.descripcion
+            )
+            formData.append(
+                'disponibilidad',
+                producto.disponibilidad
+            )
+            console.log(formData);
+        axios.post('http://127.0.0.1:5300/api/productos',formData)
+          .then(function (response) {
+            console.log(response);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
         alert(`${producto.nombre} actualizado correctamente`)
     }
 
@@ -54,7 +100,8 @@ const ActualizarProductos=(props)=>{
                     <div className="row">
                         <div className="col-12">
                             <label  className="form-label">Imagen</label>
-                            <input type="file" className="form-control" id="idImagen" name="imagen" value={producto.imagen} onChange={productOnChage} />
+                            <input type="file" className="form-control" id="idImagen" name="imagen" files={imagen} onChange={fileOnChage} />
+                            <img src={imagen} alt=""/>
                         </div>
                     </div>
                     <div className="row">
@@ -64,14 +111,14 @@ const ActualizarProductos=(props)=>{
                             <div className="col-sm-10">
                                 <div className="form-check">
                                     <input className="form-check-input" type="radio" name="disponibilidad" id="idDisponibilidad"
-                                        value="disponible" defaultChecked onChange={productOnChage}/>
+                                        value={true}  onChange={productOnChage}/>
                                     <label className="form-check-label" >
                                         Disponible
                                         </label>
                                 </div>
                                 <div className="form-check">
                                     <input className="form-check-input" type="radio" name="disponibilidad" id="idDisponibilidad2"
-                                        value="no disponible" onChange={productOnChage}/>
+                                        value={false} onChange={productOnChage}/>
                                     <label className="form-check-label" >
                                         No Disponible
                                         </label>

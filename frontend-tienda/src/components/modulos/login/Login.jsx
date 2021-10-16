@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router';
 import './loginStyle.css';
+import GoogleLogin from 'react-google-login';
 
 const Login = () => {
 
@@ -19,6 +20,12 @@ const Login = () => {
         history.push('/verArticulos')
     }
 
+    const responseGoogle=(resp)=>{
+        console.log(resp);
+        //console.log(resp.profileObj);
+        history.push('/verArticulos')
+    }
+
     return (
         <div className="login">            
             <div className="login-form ">
@@ -33,7 +40,20 @@ const Login = () => {
                     <i class="fa fa-lock"></i>
                 </div>
                 <a className="link" href="#">¿Olvidaste tu contraseña?</a>
-                <button type="submit" onClick={submit} type="button" className="log-btn" >Ingresar</button>          
+                <button type="submit" onClick={submit} className="log-btn" >Ingresar</button>          
+                <div className="log-google">
+            <GoogleLogin
+    clientId="894522620126-9i1hhddhphjmi0jjqmbk6h46pv4jsbei.apps.googleusercontent.com"
+    buttonText="Acceder con cuenta de Google"
+    /*render={renderProps => (
+        <button onClick={renderProps.onClick} disabled={renderProps.disabled}>Acceder con cuenta de Google</button>
+      )}*/
+    onSuccess={responseGoogle}
+    onFailure={responseGoogle}
+    cookiePolicy={'single_host_origin'}
+  />
+            </div>
+
                 </form>
             </div>
             

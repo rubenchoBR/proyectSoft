@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const CarritoCompras = ({articulosComprados}) => {
 
@@ -10,6 +10,39 @@ const CarritoCompras = ({articulosComprados}) => {
         if(indiceArticulo > -1){
             setArticulos([articulosComprados.splice(indiceArticulo,1)]);
         }
+    }
+    
+
+
+
+
+        
+    const confirmar = () =>{
+        fetch('http://localhost:9000/api/crear-venta',
+        {
+            method: "POST",
+            headers: new Headers({
+                'Content-Type': 'application/json' 
+            }),
+            body:JSON.stringify({DetallesVentas: crearVenta(articulosComprados)})
+        }
+        )
+        .then((res) => res.json())
+        .then(data => this.setState({ postId: data.id }))
+        .catch((err) => {
+
+        });
+    }
+
+
+
+    const crearVenta = (articulos) =>{
+        return articulos.map(articulo => {
+            var detalle = {};
+            detalle.cantidad =1;
+            detalle.total= articulo.valor;
+            return detalle;
+        });
     }
     
     return (
@@ -39,6 +72,10 @@ const CarritoCompras = ({articulosComprados}) => {
                 }
            </tbody>
             </table>
+            
+            }
+            {!!articulosComprados && articulosComprados.length > 0 &&
+                <button onClick={() => confirmar()} className="btn btn-primary w-100">Confirmar</button>
             }
             </div>
         

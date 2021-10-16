@@ -1,11 +1,12 @@
 const express = require('express');
 const router = express.Router();
-const sequelize = require('../database/db');
+
 const {Ventas, DetallesVentas, Productos} = require('../database/models');
 
 
+
 router.get('/obtener-articulos', function(req, res, next) {
-    Articulo.findAll().then(
+    Productos.findAll().then(
         productos => {
             return res.json(productos);
         }
@@ -22,7 +23,7 @@ router.get('/detallar-venta', function(req, res, next) {
 });
 
 router.post('/crear-venta', function(req, res){
-    Ventas.create({req}, {
+    Ventas.create(req.body, {
         include:  'DetallesVentas'//aca se debe usar el alias, no el objeto de modelo
       }
     ).then( response => {
@@ -31,7 +32,14 @@ router.post('/crear-venta', function(req, res){
 });
 
 router.post('/crear-productos', function(req, res){
-    Productos.create({req}
+    //console.log(req);
+    Productos.bulkCreate (/*{
+        nombre: req.body.nombre,
+        valor: req.body.valor,
+        imagen: req.body.imagen,
+        disponibilidad: req.body.disponibilidad
+    }*/
+    req.body
     ).then( response => {
         return res.json(response);}
   );;

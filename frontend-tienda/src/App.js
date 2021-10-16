@@ -1,7 +1,7 @@
 import "./App.css";
 import Header from "./components/layout/header/Header";
 import Footer from "./components/layout/footer/Footer";
-import ActualizarProductos from "./components/modulos/productos/actualizar/ActualizarProductos";
+//import ActualizarProductos from "./components/modulos/productos/actualizar/ActualizarProductos";
 import ArticulosVenta from "./components/modulos/ventas/ArticulosVenta";
 import CarritoCompras from "./components/modulos/ventas/CarritoCompras";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
@@ -10,12 +10,12 @@ import ListarProductos from "./components/modulos/productos/listar/ListarProduct
 import Login from "./components/modulos/login/Login";
 function App() {
 
-
+/*
   useEffect(() => {
    fetch('http://localhost:9000/api')
     .then(resp => resp.json())
     .then(data => this.setState())
-   },[]);
+   },[]);*/
 
    
 

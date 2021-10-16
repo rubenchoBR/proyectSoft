@@ -1,20 +1,20 @@
 import React, { useState } from 'react';
-import './actualizar.css'
+import './crear.css'
 const axios = require('axios');
 
 const ActualizarProductos=(props)=>{
     console.log(props.producto)
     
     const [producto, setProducto] = useState({
-        id: props.producto.id,
-        nombre: props.producto.nombre,
-        valor: props.producto.valor,
-        descripcion: props.producto.descripcion,
-        disponibilidad: props.producto.disponibilidad
+        id: '',
+        nombre: '',
+        valor: 0,
+        descripcion: '',
+        disponibilidad: true
     
 
     })
-    const [imagen, setImagen] = useState(props.producto.imagen)
+    const [imagen, setImagen] = useState('')
     
     
     const productOnChage = (e) => {
@@ -33,20 +33,18 @@ const ActualizarProductos=(props)=>{
             
         }
     
-    const actualizarProduct=(e)=>{
+    const crearProduct=(e)=>{
         e.preventDefault()
         console.log(producto)
 
         console.log(imagen);
             const formData= new FormData();
-            if(imagen.name){
-                formData.append(
-                    'file0',
-                    imagen,
-                    imagen.name
-                )
-            }
-           
+
+            formData.append(
+                'file0',
+                imagen,
+                imagen.name
+            )
             formData.append(
                 'nombre',
                 producto.nombre
@@ -64,10 +62,10 @@ const ActualizarProductos=(props)=>{
                 producto.disponibilidad
             )
            
-        axios.put(`http://127.0.0.1:5300/api/productos/${producto.id}`,formData)
+        axios.post('http://127.0.0.1:5300/api/productos',formData)
           .then(function (response) {
             console.log(response);
-            alert(`Producto actualizado correctamente`)
+            alert(`${response.data.productoCreado.nombre} registrado correctamente`)
           })
           .catch(function (error) {
             console.log(error);
@@ -82,11 +80,7 @@ const ActualizarProductos=(props)=>{
             <div className="container">
                 <form className="formularioActualizarProduct"> 
                     <div className="row">
-                        <div className="form-group col-12 col-md-6">
-                            <label className="form-label">Identificador</label>
-                            <input type="text" className="form-control" id="idIdentificador" name="identificador" value={producto.id} onChange={productOnChage}disabled />
-                        </div>
-                        <div className="form-group col-12 col-md-6">
+                        <div className="form-group col-12">
                             <label className="form-label">Nombre</label>
                             <input type="text" className="form-control" id="idNombre" name="nombre" value={producto.nombre} onChange={productOnChage} />
                         </div>
@@ -107,7 +101,7 @@ const ActualizarProductos=(props)=>{
                         <div className="col-12">
                             <label  className="form-label">Imagen</label>
                             <input type="file" className="form-control" id="idImagen" name="imagen" files={imagen} onChange={fileOnChage} />
-                            <img src={`http://127.0.0.1:5300/api/productos/imagen/${imagen}`} alt="" width={100}/>
+                            
                         </div>
                     </div>
                     <div className="row">
@@ -133,7 +127,7 @@ const ActualizarProductos=(props)=>{
                         </div>
                     </div>
                     <div className="col-12">
-                        <button type="submit" className="btn btn-primary" onClick={actualizarProduct}>Actualizar</button>
+                        <button type="submit" className="btn btn-primary" onClick={crearProduct}>Registrar</button>
                     </div>
                 </form>
             </div>

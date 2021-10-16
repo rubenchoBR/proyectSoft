@@ -5,10 +5,12 @@ const {
   crearProducto,
   listarProductos,
   editarProducto,
+  mostrarImagen
 } = require("../controllers/ProductosControlador");
 const router = express.Router();
 
 router.get("/", listarProductos);
 router.post("/", md_upload, crearProducto);
-router.put("/", editarProducto);
+router.put("/:id",md_upload, editarProducto);
+router.get('/imagen/:image',mostrarImagen)
 module.exports = router;

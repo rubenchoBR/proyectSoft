@@ -6,6 +6,7 @@ import ArticulosVenta from "./components/modulos/ventas/ArticulosVenta";
 import CarritoCompras from "./components/modulos/ventas/CarritoCompras";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import ListarProductos from "./components/modulos/productos/listar/ListarProductos";
+import CrearProductos from "./components/modulos/productos/crear/CrearProductos";
 import Login from "./components/modulos/login/Login";
 import { useEffect } from "react";
 
@@ -25,6 +26,7 @@ function App() {
           <Route exact path="/listarProductos" component={ListarProductos} />
           <Route exact path="/verArticulos" component={ArticulosVenta} />
           <Route exact path="/verCarrito" component={CarritoCompras} />
+          <Route exact path="/registrarProducto" component={CrearProductos} />
           <Route exact path="/login" component={Login} />
         </Switch>
       </Router>

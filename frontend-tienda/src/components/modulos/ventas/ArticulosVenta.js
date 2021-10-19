@@ -22,7 +22,7 @@ const ArticulosVenta = () => {
     );
 
     useEffect(() => {
-        fetch('http://localhost:9000/api/obtener-articulos',
+        fetch('http://127.0.0.1:5300/api/productos',
         {
             method: "GET",
             headers: new Headers({
@@ -32,13 +32,14 @@ const ArticulosVenta = () => {
         
         )
       .then((res) => res.json())
-      .then(data => {setArticulosAMostrar(data)})
+      .then(data => {setArticulosAMostrar(data.listaProductos)})
       .catch((err) => {
 
       });
       
       
         },[])
+        console.log(articulosAMostrar);
 
         /*/*
         fetch('http://localhost:9000/api/obtener-articulos')
@@ -55,7 +56,7 @@ const ArticulosVenta = () => {
         return texto.normalize('NFD').replace(/[\u0300-\u036f]/g, "").toLowerCase();
     }
     const filtrar = (e) =>{
-        setArticulosAMostrar(articulos);
+        setArticulosAMostrar(articulosAMostrar);
         var textoBusqueda = e.target.value;
         if(!!textoBusqueda){
             textoBusqueda = normalizarTexto(textoBusqueda);
@@ -86,7 +87,7 @@ const ArticulosVenta = () => {
                             <div className="card" style={{width: '18rem'}}>
                                 <div className="card-body">
                                     <h5 className="card-title">{elemento.nombre}</h5>
-                                    <img src={elemento.imagen} key={elemento} alt={elemento.nombre} className="imagen-articulo"/>
+                                    <img src={`http://127.0.0.1:5300/api/productos/imagen/${elemento.imagen}`} key={elemento} alt={elemento.nombre} className="imagen-articulo"/>
                                     <p><span>Precio: $</span> {elemento.valor}</p>
                                     <button onClick={() => adicionar(elemento)} className="btn btn-primary w-100">Comprar</button>
                                 </div>

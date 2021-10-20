@@ -4,15 +4,17 @@ const Op = Sequelize.Op;
 
 const crearVenta = async (req, res) => {
   try {
-    Ventas.create(req.body, {
-      include:  'dventas'//aca se debe usar el alias, no el objeto de modelo
+    const ventaCreada = await Ventas.create(req.body, {include:  'dventas'});
+    if (ventaCreada) {
+      res.status(200).send({
+        ventaCreada,
+      });
+    } else {
+      res.status(400).send({
+        msg: "Error al crear la venta",
+      });
     }
-  ).then( response => {
-      return res.json(response);}
-);;
-  } catch (error) {
-    console.log(error)
-  }
+  } catch (error) {}
 };
 
 const listarVentas = async (req, res) => {

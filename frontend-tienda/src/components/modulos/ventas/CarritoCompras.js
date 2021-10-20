@@ -19,7 +19,7 @@ const CarritoCompras = ({articulosComprados}) => {
             headers: new Headers({
                 'Content-Type': 'application/json' 
             }),
-            body:JSON.stringify({DetallesVentas: crearVenta(articulosComprados)})
+            body:JSON.stringify({dventas: crearVenta(articulosComprados)})
         }
         )
         .then((res) => res.json())

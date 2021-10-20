@@ -87,7 +87,7 @@ const ArticulosVenta = () => {
                             <div className="card" style={{width: '18rem'}}>
                                 <div className="card-body">
                                     <h5 className="card-title">{elemento.nombre}</h5>
-                                    <img src={`http://127.0.0.1:5300/api/productos/imagen/${elemento.imagen}`} key={elemento} alt={elemento.nombre} className="imagen-articulo"/>
+                                    <img src={elemento.imagen} key={elemento} alt={elemento.nombre} className="imagen-articulo"/>
                                     <p><span>Precio: $</span> {elemento.valor}</p>
                                     <button onClick={() => adicionar(elemento)} className="btn btn-primary w-100">Comprar</button>
                                 </div>

@@ -92,7 +92,9 @@ const listarProductos = async (req, res) => {
       });
     }
   } catch (err) {
-    console.log(err);
+    res.status(500).send({
+      error: "Error en el servidor "+err,
+    });
   }
 };
 

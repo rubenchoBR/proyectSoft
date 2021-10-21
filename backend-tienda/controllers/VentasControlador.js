@@ -4,7 +4,7 @@ const Op = Sequelize.Op;
 
 const crearVenta = async (req, res) => {
   try {
-    const ventaCreada = await Ventas.create(req.body);
+    const ventaCreada = await Ventas.create(req.body, {include:  'dventas'});
     if (ventaCreada) {
       res.status(200).send({
         ventaCreada,

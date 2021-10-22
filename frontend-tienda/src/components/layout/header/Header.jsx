@@ -1,5 +1,6 @@
 import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.min.js';
 import './header.css'
 import logo from '../../assets/img/logo.png'
 
@@ -22,8 +23,15 @@ const Header = ()=>{
                             <li className="nav-item">
                                 <a className="nav-link active" aria-current="page" href="#">Inicio</a>
                             </li>
-                            <li className="nav-item">
-                                <a className="nav-link" href="/listarProductos">Gestion Productos</a>
+                            <li className="nav-item dropdown">
+                                <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Gestion Productos
+                                </a>
+                                <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                    <li><a className="dropdown-item" href="/productosDisponibles">Disponibles</a></li>
+                                    <li><a className="dropdown-item" href="/productosNoDisponibles">No Disponibles</a></li>
+                                    
+                                </ul>
                             </li>
                             <li className="nav-item">
                                 <a className="nav-link" href="/listarUsuarios">Gestion Usuarios</a>

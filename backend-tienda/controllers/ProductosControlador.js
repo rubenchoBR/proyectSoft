@@ -4,6 +4,7 @@ const { log } = require("debug");
 const Op = Sequelize.Op;
 const fs = require("fs");
 const path = require("path");
+const { where } = require("sequelize");
 
 const crearProducto = async (req, res) => {
   console.log(req);
@@ -168,31 +169,43 @@ const editarProducto = async (req, res) => {
       });
     }
   
-
-   
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
- 
-
- 
 };
+const cambiarDisponibilidad=async(req,res)=>{
+  const idProducto = req.params.id
+  console.log(idProducto)
+  const disponibilidad = req.body.disponibilidad;
+  try {
+      resp=await Productos.update({
+        disponibilidad: disponibilidad},{
+        where:{
+          id:idProducto
+        }
+        })
+
+        if(resp && resp[0]==1){
+          res.status(200).send({
+            message: "Productos actualizado correctamente"
+          })
+        }else{
+          res.status(400).send({
+            message: "Productos no existe"
+          })
+        }
+    
+  } catch (error) {
+    res.status(500).send({
+      message: "Error en el servidor "+error
+    })
+  }
+  
+    
+  console.log(resp[0])
+}
 
 module.exports = {
   crearProducto,
   listarProductos,
   editarProducto,
-  mostrarImagen
+  mostrarImagen,
+  cambiarDisponibilidad
 };

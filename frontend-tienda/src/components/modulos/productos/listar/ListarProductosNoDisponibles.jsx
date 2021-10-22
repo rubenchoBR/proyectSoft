@@ -8,7 +8,7 @@ const axios = require('axios');
 
 
 
-const ListarProductos = ()=>{
+const ListarProductosNoDisponibles = ()=>{
     const history = useHistory();   
     
     console.log(articulos)
@@ -20,11 +20,14 @@ const ListarProductos = ()=>{
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [items, setItems] = useState([]);
-    const [disponible,setDisponible]=useState(true)
+    const [disponible, setDisponible] = useState(false);
 
 
+    
 
     useEffect(() => {
+        console.log(disponible)
+        console.log("UseEffect");
         fetch('http://127.0.0.1:5300/api/productos')
           .then(res => res.json())
           .then(
@@ -33,7 +36,7 @@ const ListarProductos = ()=>{
               console.log(result)
               let prod = result.listaProductos.filter(function(element){
                   console.log(element)
-                  return element.disponibilidad==true;
+                  return element.disponibilidad==false;
               })
               console.log(prod);
               setItems(prod);
@@ -46,7 +49,7 @@ const ListarProductos = ()=>{
               setError(error);
             }
           )
-      }, [disponible])
+      },[disponible])
       console.log(items)
           
     const onSearchChange = (e)=>{
@@ -60,9 +63,9 @@ const ListarProductos = ()=>{
         console.log(e,producto);
     }
     const cambiarDisponibilidad=(e,product)=>{
-        console.log(e)
+        
         axios.put(`http://127.0.0.1:5300/api/productos/cambiarDisponibilidad/${product.id}`,{
-            disponibilidad:false
+            disponibilidad:true
         })
           .then(function (response) {
             console.log(response);
@@ -112,10 +115,7 @@ const ListarProductos = ()=>{
             &nbsp;
             <button className="btn btn-primary"  onClick={siguiente}>Siguiente</button>
       
-            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                <button class="btn btn-primary me-md-2" type="button" onClick={registrar}>Registrar Producto</button>
-                
-            </div>
+            
             <div className="table-responsive">
                 <table className="table table-hover">
                    
@@ -137,11 +137,11 @@ const ListarProductos = ()=>{
                                 <td>{producto.valor}</td>
                                 <td>{producto.descripcion}</td>
                                 <td> 
-                                    <button className="btn btn-primary btn-sm" onClick={(e) => actualizar(e,producto)}>Actualizar</button>&nbsp;
-                                    <button className="btn btn-danger btn-sm" onClick={(e)=>{cambiarDisponibilidad(e,producto)}}>Deshabilitar</button>
+                                    
+                                    <button className="btn btn-success btn-sm" value="disponibilidad" onClick={(e)=>{cambiarDisponibilidad(e,producto)}}>Activar</button>
                                 </td>
                             </tr>
-                        )):<div>No hay productos</div>
+                        )):<div>Todos los productos están disponibles</div>
                     }
 
 
@@ -167,4 +167,4 @@ const ListarProductos = ()=>{
     );
 }
 
-export default ListarProductos;
+export default ListarProductosNoDisponibles;

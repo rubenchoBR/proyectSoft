@@ -10,6 +10,7 @@ import CrearProductos from "./components/modulos/productos/crear/CrearProductos"
 import ListarUsuarios from "./components/modulos/usuarios/ListarUsuarios/ListarUsuarios";
 import Login from "./components/modulos/login/Login";
 import { useEffect } from "react";
+import ListarProductosNoDisponibles from "./components/modulos/productos/listar/ListarProductosNoDisponibles";
 
 function App() {
   /*seEffect(() => {
@@ -24,7 +25,8 @@ function App() {
 
       <Router>
         <Switch>
-          <Route exact path="/listarProductos" component={ListarProductos} />
+          <Route exact path="/productosDisponibles" component={ListarProductos} />
+          <Route exact path="/productosNoDisponibles" component={ListarProductosNoDisponibles} />
           <Route exact path="/verArticulos" component={ArticulosVenta} />
           <Route exact path="/verCarrito" component={CarritoCompras} />
           <Route exact path="/registrarProducto" component={CrearProductos} />

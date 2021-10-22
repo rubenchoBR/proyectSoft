@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState , useEffect} from 'react';
 import {articulos} from '../../../datos/Articulos';
+import Header from '../../layout/header/Header';
 import CarritoCompras from './CarritoCompras';
+
 //import { useSelector, useDispatch } from 'react-redux';
 //import { createStore } from 'redux';
 
@@ -13,8 +15,38 @@ const ArticulosVenta = () => {
     );
 
     const [articulosAMostrar, setArticulosAMostrar] = useState(
-        articulos
+        //articulos
+        []
+        
+
     );
+
+    useEffect(() => {
+        fetch('http://127.0.0.1:5300/api/productos',
+        {
+            method: "GET",
+            headers: new Headers({
+                Accept: "application/json"
+            })
+        }
+        
+        )
+      .then((res) => res.json())
+      .then(data => {setArticulosAMostrar(data.listaProductos)})
+      .catch((err) => {
+
+      });
+      
+      
+        },[])
+        console.log(articulosAMostrar);
+
+        /*/*
+        fetch('http://localhost:9000/api/obtener-articulos')
+         .then(function(resp){
+            setArticulosAMostrar(resp.json())
+            }
+        ).then(data => setArticulosAMostrar(data))*/
 
     const adicionar = (articulo) =>{
         setArtVenta([...artVenta,articulo])
@@ -24,7 +56,7 @@ const ArticulosVenta = () => {
         return texto.normalize('NFD').replace(/[\u0300-\u036f]/g, "").toLowerCase();
     }
     const filtrar = (e) =>{
-        setArticulosAMostrar(articulos);
+        setArticulosAMostrar(articulosAMostrar);
         var textoBusqueda = e.target.value;
         if(!!textoBusqueda){
             textoBusqueda = normalizarTexto(textoBusqueda);
@@ -38,7 +70,7 @@ const ArticulosVenta = () => {
         }
     }
 
-    return (
+    return articulosAMostrar ? (
         <div className="container">
             <div  className='row margen-contenedor'>
             <div className='col-md-9'> 
@@ -48,7 +80,7 @@ const ArticulosVenta = () => {
             </div>
                 <div className='row'>
                     {
-                    articulosAMostrar.map(elemento => {
+                    articulosAMostrar.length > 0 && articulosAMostrar.map(elemento => {
                         return (
 
                         <div className='col-4 ml-1  mb-3'>
@@ -73,7 +105,7 @@ const ArticulosVenta = () => {
             </div>
             </div>
         </div>
-    )
+    ): null
 }
 
 export default ArticulosVenta

@@ -11,7 +11,34 @@ const CarritoCompras = ({articulosComprados}) => {
             setArticulos([articulosComprados.splice(indiceArticulo,1)]);
         }
     }
+
+    const confirmar = () =>{
+        fetch('http://127.0.0.1:5300/api/ventas/crear-venta',
+        {
+            method: "POST",
+            headers: new Headers({
+                'Content-Type': 'application/json' 
+            }),
+            body:JSON.stringify({dventas: crearVenta(articulosComprados)})
+        }
+        )
+        .then((res) => res.json())
+        .then(data => this.setState({ postId: data.id }))
+        .catch((err) => {
+
+        });
+    }
     
+    const crearVenta = (articulos) =>{
+        return articulos.map(articulo => {
+            var detalle = {};
+            detalle.cantidad =1;
+            detalle.total= articulo.valor;
+            return detalle;
+        });
+    }
+    
+
     return (
             <div>
             {!!articulosComprados && articulosComprados.length > 0 &&
@@ -39,6 +66,9 @@ const CarritoCompras = ({articulosComprados}) => {
                 }
            </tbody>
             </table>
+            }           
+            {!!articulosComprados && articulosComprados.length > 0 &&
+                <button onClick={() => confirmar()} className="btn btn-primary w-100">Confirmar</button>
             }
             </div>
         

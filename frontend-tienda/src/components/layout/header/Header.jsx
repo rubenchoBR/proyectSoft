@@ -23,10 +23,10 @@ const Header = ()=>{
                                 <a className="nav-link active" aria-current="page" href="#">Inicio</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="#">Gestion Productos</a>
+                                <a className="nav-link" href="/listarProductos">Gestion Productos</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="#">Gestion Clientes</a>
+                                <a className="nav-link" href="/listarUsuarios">Gestion Usuarios</a>
                             </li>
                             <li className="nav-item">
                                 <a className="nav-link" href="#">Gestion de Ventas</a>

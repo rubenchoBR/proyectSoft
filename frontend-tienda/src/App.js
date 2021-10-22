@@ -6,9 +6,18 @@ import ArticulosVenta from "./components/modulos/ventas/ArticulosVenta";
 import CarritoCompras from "./components/modulos/ventas/CarritoCompras";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import ListarProductos from "./components/modulos/productos/listar/ListarProductos";
+import CrearProductos from "./components/modulos/productos/crear/CrearProductos";
+import ListarUsuarios from "./components/modulos/usuarios/ListarUsuarios/ListarUsuarios";
 import Login from "./components/modulos/login/Login";
+import { useEffect } from "react";
 
 function App() {
+  /*seEffect(() => {
+   fetch('http://localhost:9000/api')
+    .then(resp => resp.json())
+    .then(data => this.setState())
+   },[]);*/
+
   return (
     <div>
       <Header />
@@ -18,6 +27,8 @@ function App() {
           <Route exact path="/listarProductos" component={ListarProductos} />
           <Route exact path="/verArticulos" component={ArticulosVenta} />
           <Route exact path="/verCarrito" component={CarritoCompras} />
+          <Route exact path="/registrarProducto" component={CrearProductos} />
+          <Route exact path="/listarUsuarios" component={ListarUsuarios} />
           <Route exact path="/login" component={Login} />
         </Switch>
       </Router>
